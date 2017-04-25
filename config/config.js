@@ -1,7 +1,7 @@
 module.exports = {
     database: 'chatroom',
-    username: 'root',
-    password: '',
+    username: 'chat',
+    password: 'chat-room',
     options: {
         host: 'localhost',
         port: 3306,
