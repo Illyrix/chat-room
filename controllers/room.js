@@ -85,6 +85,8 @@ async function getToken(ctx, next) {
     return true
 }
 
+module.exports = {get, create, del, getToken }
+
 // async function removeUser(ctx, next) {
 //     let user = await session.loginUser(ctx)
 //     if (!user) {
