@@ -49,6 +49,34 @@ async function create(ctx, next) {
     return true
 }
 
+async function addUser(ctx, next) {
+    let user = await session.loginUser(ctx)
+    if (!user) {
+        ctx.throw(403)
+        return false
+    }
+    let id = ctx.params.id
+    let data = ctx.request.body
+    if (!data || !data['username']) {
+        ctx.throw(400)
+        return false
+    }
+    let insertUser = await model.User.find({ where: { username: data['username'] } })
+    if (!insertUser) {
+        ctx.throw(400)
+        return false
+    }
+    if (!await model.Room.find({ where: { id, creater: user.id } })) {
+        ctx.throw(403)
+        return false
+    }
+    if (!await model.Access.find({ where: { roomid: id, userid: insertUser.id } })) {
+        await model.Access.create({ roomid: id, userid: insertUser.id })
+    }
+    ctx.response.status = 205
+    return true
+}
+
 async function del(ctx, next) {
     let user = await session.loginUser(ctx)
     if (!user) {

@@ -20,6 +20,9 @@ router
     .post('/Room', async(ctx, next) => {
         await (controllers['room']['create'](ctx, next))
     })
+    .put('/Room/:id', async(ctx, next) => {
+        await (controllers['room']['addUser'](ctx, next))
+    })
     .delete('/Room/:id', async(ctx, next) => {
         await (controllers['room']['del'](ctx, next))
     })
