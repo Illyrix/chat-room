@@ -12,8 +12,8 @@ async function loginUser(ctx) {
 async function login(ctx) {
 
     let data = ctx.request.body
-    return { data, login: !ctx.session[SESSION_KEY] }
     if (loginUser(ctx)) return loginUser(ctx)
+    return { res: (!data || !data['username'] || !data['password']) }
     if (!data || !data['username'] || !data['password']) {
         ctx.response.body = { status: false }
         return false
