@@ -7,7 +7,12 @@ async function get(ctx, next) {
         ctx.throw(403)
         return false
     }
-    let q = await model.Access.findAll({ where: { userid: user['id'], order: 'id DESC' } })
+    let q = await model.Access.findAll({
+        where: { userid: user['id'] },
+        order: [
+            ['id', 'DESC']
+        ]
+    })
     let rooms = []
     for (let i in q)
         rooms.push(q[i]['roomid'])
