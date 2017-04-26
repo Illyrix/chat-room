@@ -41,9 +41,13 @@ async function create(ctx, next) {
         ctx.throw(400)
         return false
     }
-    await model.Room.create({
+    let room = (await model.Room.create({
         name: data['name'],
         creater: user.id
+    })).get({ 'plain': true })
+    await model.Access.create({
+        roomid: room.id,
+        userid: user.id
     })
     ctx.response.status = 201
     return true
