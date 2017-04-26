@@ -36,7 +36,7 @@ async function get(ctx, next) {
 }
 
 async function login(ctx, next) {
-    await session.login(ctx)
+    ctx.response.body = await session.login(ctx)
         // if (!await session.login(ctx))
         //     ctx.response.status = 403
         // else
