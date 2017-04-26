@@ -16,6 +16,8 @@ async function login(ctx) {
         ctx.response.body = { status: false }
         return false
     }
+    ctx.response.body = crypto.createHash('md5').update(data['password']).digest('hex')
+    return
     let query = await model.User.find({
         attributes: { exclude: ['password'] },
         where: {
