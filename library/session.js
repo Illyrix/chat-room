@@ -10,9 +10,10 @@ async function loginUser(ctx) {
 }
 
 async function login(ctx) {
+
+    let data = ctx.request.body
     return { data, login: loginUser(ctx) }
     if (loginUser(ctx)) return loginUser(ctx)
-    let data = ctx.request.body
     if (!data || !data['username'] || !data['password']) {
         ctx.response.body = { status: false }
         return false
