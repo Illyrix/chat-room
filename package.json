@@ -1,17 +1,18 @@
 {
-    "dependencies": {
-        "koa": ">=2.0.0",
-        "koa-bodyparser": "^3.2.0",
-        "koa-logger": "latest",
-        "koa-router": ">=7.1.0",
-        "koa-session2": "latest",
-        "mysql": "^2.13.0",
-        "request": "latest",
-        "request-promise": "latest",
-        "sequelize": "^3.30.4",
-        "ws": "^2.3.1"
-    },
-    "engines": {
-        "node": ">= 6"
-    }
+  "dependencies": {
+    "kcors": "^2.2.1",
+    "koa": ">=2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-logger": "latest",
+    "koa-router": ">=7.1.0",
+    "koa-session2": "latest",
+    "mysql": "^2.13.0",
+    "request": "latest",
+    "request-promise": "latest",
+    "sequelize": "^3.30.4",
+    "ws": "^2.3.1"
+  },
+  "engines": {
+    "node": ">= 6"
+  }
 }

@@ -8,6 +8,8 @@ const session = require("koa-session2")
 
 const router = require("./routes/route.js")
 
+const cors = require('kcors')
+
 const app = new koa()
 
 app.use(logger())
@@ -15,6 +17,8 @@ app.use(logger())
 app.use(session({
     key: "KOA_SESS_ID", //default "koa:sess"
 }))
+
+app.use(cors())
 
 app.use(bodyParser())
 
