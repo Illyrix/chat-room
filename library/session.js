@@ -12,13 +12,11 @@ async function loginUser(ctx) {
 async function login(ctx) {
 
     let data = ctx.request.body
-    if (loginUser(ctx)) return loginUser(ctx)
-    return { res: (!data || !data['username'] || !data['password']) }
+    if (await loginUser(ctx)) return await loginUser(ctx)
     if (!data || !data['username'] || !data['password']) {
         ctx.response.body = { status: false }
         return false
     }
-    return crypto.createHash('md5').update(data['password']).digest('hex')
     let query = await model.User.find({
         attributes: { exclude: ['password'] },
         where: {
@@ -39,7 +37,7 @@ async function login(ctx) {
 }
 
 async function logout(ctx) {
-    if (!loginUser(ctx)) {
+    if (!await loginUser(ctx)) {
         ctx.response.body = { status: false }
         return false
     }

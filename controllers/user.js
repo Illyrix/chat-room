@@ -36,11 +36,11 @@ async function get(ctx, next) {
 }
 
 async function login(ctx, next) {
-    ctx.response.body = await session.login(ctx)
-        // if (!await session.login(ctx))
-        //     ctx.response.status = 403
-        // else
-        //     ctx.response.status = 200
+    //ctx.response.body = await session.login(ctx)
+    if (!await session.login(ctx))
+        ctx.response.status = 403
+    else
+        ctx.response.status = 200
 }
 
 async function logout(ctx, next) {
